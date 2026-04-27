@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Taken | ComplaintFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="container result-container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">✅</span>
+                <h1>Issue Processed</h1>
+            </div>
+            <p>Our autonomous AI agent has analyzed and routed your complaint.</p>
+        </header>
+
+        <main class="glass-panel result-panel">
+            <div class="result-card">
+                <div class="result-header">
+                    <h2>AI Understanding</h2>
+                </div>
+                <div class="result-content">
+                    <p class="summary-text">"{{ summary }}"</p>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <span class="metric-label">Routed To</span>
+                    <span class="metric-value department">{{ department_email }}</span>
+                </div>
+                
+                <div class="metric-box urgency-{{ urgency|lower }}">
+                    <span class="metric-label">Assessed Urgency</span>
+                    <span class="metric-value">{{ urgency }}</span>
+                </div>
+                
+                <div class="metric-box timeline-box">
+                    <span class="metric-label">Expected Resolution</span>
+                    <span class="metric-value">{{ timeline }}</span>
+                </div>
+            </div>
+
+            <div class="followup-notice">
+                <span class="icon">🕒</span>
+                <p>We've stored this in our secure database. The system will automatically follow up in 24 hours if no resolution is detected.</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/" class="btn-secondary">Submit Another Issue</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
