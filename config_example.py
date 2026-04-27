@@ -7,5 +7,11 @@ DEPARTMENTS = {
     "payment": "accounts@college.com",
     "academics": "academic@college.com",
     "technical": "tech@college.com",
-    "administration": "admin@college.com"
+}
+
+DEPARTMENT_HEAD_EMAILS = {
+    "technical": "tech_head@college.com",
+    "payment": "head_accounts@college.com",
+    "administration": "admin_head@college.com",
+    "academics": "hod_academics@college.com"
 }

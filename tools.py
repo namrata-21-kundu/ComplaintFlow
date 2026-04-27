@@ -81,3 +81,17 @@ def store_db(data):
     except Exception as e:
         print(f"DB Error: {e}")
         return f"❌ DB Error: {e}"
+
+def get_next_task():
+    """Tool: Fetches the oldest pending complaint from the database (FIFO)."""
+    try:
+        conn = sqlite3.connect("database.db")
+        cursor = conn.cursor()
+        # ASC ensures the oldest dates come first for chronological fairness
+        cursor.execute("SELECT * FROM complaints WHERE status = 'Pending' ORDER BY timestamp ASC LIMIT 1")
+        task = cursor.fetchone()
+        conn.close()
+        return task
+    except Exception as e:
+        print(f"DB Fetch Error: {e}")
+        return None

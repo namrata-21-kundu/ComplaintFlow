@@ -11,3 +11,10 @@ DEPARTMENT_EMAILS = {
     "Admin": "admin_dept@example.com",
     "Academics": "academics_dept@example.com"
 }
+
+DEPARTMENT_HEAD_EMAILS = {
+    "Technical": "tech_head@example.com",
+    "Accounts": "head_accounts@example.com",
+    "Admin": "admin_head@example.com",
+    "Academics": "hod_academics@example.com"
+}

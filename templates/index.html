@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComplaintFlow | AI Campus Issue Resolution</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Student Complaint Form</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <div class="background-elements">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
-    
-    <div class="container">
-        <header>
-            <div class="logo">
-                <span class="logo-icon">⚡</span>
-                <h1>ComplaintFlow</h1>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h2>College Complaint Portal</h2>
+            <p>Please fill out the form below to submit your grievance.</p>
+        </div>
+
+        <form id="complaintForm" action="/submit" method="POST">
+            <!-- Name Field -->
+            <div class="input-group">
+                <label for="studentName">Full Name</label>
+                <input type="text" id="studentName" name="name" placeholder="Enter your full name" required>
             </div>
-            <p>Smart, autonomous campus issue resolution powered by AI.</p>
-        </header>
 
-        <main class="glass-panel">
-            <form action="/submit" method="POST" id="complaint-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="John Doe" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="enrollment_no">Enrollment No.</label>
-                        <input type="text" id="enrollment_no" name="enrollment_no" placeholder="e.g. 2023CS101" required>
-                    </div>
-                </div>
+            <!-- Enrollment Number Field -->
+            <div class="input-group">
+                <label for="enrollmentNo">Enrollment Number</label>
+                <input type="text" id="enrollmentNo" name="enrollment_no" placeholder="e.g. EN12345678" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="year">Academic Year</label>
-                    <select id="year" name="year" required>
-                        <option value="" disabled selected>Select Year</option>
-                        <option value="1">First Year</option>
-                        <option value="2">Second Year</option>
-                        <option value="3">Third Year</option>
-                        <option value="4">Fourth Year</option>
-                        <option value="Postgrad">Postgraduate</option>
-                    </select>
-                </div>
+            <!-- Email Field -->
+            <div class="input-group">
+                <label for="studentEmail">Email Address</label>
+                <input type="email" id="studentEmail" name="email" placeholder="e.g. student@college.edu" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="complaint">Describe your issue</label>
-                    <textarea id="complaint" name="complaint" rows="5" placeholder="E.g., The WiFi in the central library has been down since morning and I have an urgent exam tomorrow..." required></textarea>
-                </div>
+            <!-- Academic Year Field (Kept to prevent backend issues) -->
+            <div class="input-group">
+                <label for="year">Academic Year</label>
+                <select id="year" name="year" required>
+                    <option value="" disabled selected>Select Year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
+                    <option value="Postgrad">Postgraduate</option>
+                </select>
+            </div>
 
-                <button type="submit" class="submit-btn" id="submit-btn">
-                    <span>Submit to AI Agent</span>
-                    <div class="loader" id="loader"></div>
-                </button>
-            </form>
-        </main>
-        
-        <footer>
-            <p>Resolving issues up to 7x faster with AI reasoning.</p>
-        </footer>
+            <!-- Complaint Field -->
+            <div class="input-group">
+                <label for="complaint">Complaint Description</label>
+                <textarea id="complaint" name="complaint" rows="5" placeholder="Describe the issue you are facing..."
+                    required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span>Submit Complaint</span>
+                <div class="loader"></div>
+            </button>
+        </form>
     </div>
 
     <script>
-        document.getElementById('complaint-form').addEventListener('submit', function() {
-            const btn = document.getElementById('submit-btn');
+        document.getElementById('complaintForm').addEventListener('submit', function () {
+            const btn = document.getElementById('submitBtn');
             btn.classList.add('loading');
-            btn.querySelector('span').innerText = 'AI Agent Analyzing...';
+            btn.querySelector('span').innerText = 'Processing...';
         });
     </script>
 </body>
+
 </html>
